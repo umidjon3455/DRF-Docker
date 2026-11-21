@@ -1,3 +1,9 @@
-from django.test import TestCase
+from django.test import SimpleTestCase
 
-# Create your tests here.
+from products.serializers import ProductSerializer
+
+
+class ProductSerializerFieldsTests(SimpleTestCase):
+    def test_product_serializer_exposes_price_and_category(self):
+        self.assertIn('price', ProductSerializer.Meta.fields)
+        self.assertIn('category', ProductSerializer.Meta.fields)
